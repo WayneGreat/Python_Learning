@@ -59,15 +59,3 @@ print("Teacher {0} said : {1}, {2}".format(tea_wang.name, stu_zhang.name, tea_to
 stu_newton = Student('Newton', 8, 'physics')
 tea_to_newton = tea_wang.evaluate(stu_newton.do_work(4))
 print("Teacher {0} said: {1},{2}".format(tea_wang.name, stu_newton.name, tea_to_newton))
-
-
-# 笔记
-class Foo:
-    def __init__(self):  # 初始化方法，实例一创建就执行
-        print("I am in init")
-        self.x = 'python'  # 实例具有了x的属性
-
-
-f = Foo()
-dir(f)  # 通过dir()函数获取实例的属性
-print(f.x)
