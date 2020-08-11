@@ -18,6 +18,8 @@ Teacher Yang said: Newton,You are great.
 **对象** `object` 表示客观世界问题空间中的某个具体事物，又表示软件系统解空间的中的基本元素
 
 **面向对象程序设计** `Object-oriented programming, OOP` 是一种程序设计范型，也是一种程序开发的方法
+
+ ![image](https://github.com/WayneGreat/Python_Learning/blob/master/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/Image/%E5%88%9B%E5%BB%BA%E7%B1%BB.png)
 > 示例
 ```python
 class Foo:
