@@ -13,11 +13,14 @@ Teacher Yang said : zhang, You should work hard.
 Teacher Yang said: Newton,You are great.
 ```
 ### 笔记
-**类** `class` 是一种面向对象计算机编程语言的构造，是创建对象的蓝图，描述了所创建的对象共同的属性和方法
+#### `类 class` 
+- 是一种面向对象计算机编程语言的构造，是创建对象的蓝图，描述了所创建的对象共同的属性和方法
 
-**对象** `object` 表示客观世界问题空间中的某个具体事物，又表示软件系统解空间的中的基本元素
+#### `对象 object` 
+- 表示客观世界问题空间中的某个具体事物，又表示软件系统解空间的中的基本元素
 
-**面向对象程序设计** `Object-oriented programming, OOP` 是一种程序设计范型，也是一种程序开发的方法
+#### `面向对象程序设计 Object-oriented programming, OOP` 
+- 是一种程序设计范型，也是一种程序开发的方法
 
  ![image](https://github.com/WayneGreat/Python_Learning/blob/master/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/Image/%E5%88%9B%E5%BB%BA%E7%B1%BB.png)
 > 示例
@@ -71,3 +74,25 @@ Weeks is: 30
 #### `self的作用`
 - 类中的方法，如无特别规定，都是以self作为第一参数
 - selfs用当前实例
+***
+## Class3.py
+### 练习题
+```
+创建类，能够通过 "年-月-日" 字符串创建实例，并检验年，月，日是否合法.
+```
+### 运行结果
+```
+2020 11 11
+True
+```
+### 笔记
+#### `方法与函数`
+- 名称的命名、代码块的编写方式都一样
+- (实例)方法不能单独调用，只能通过实例／类调用
+- 方法的第一个参数必须是self
+#### `类方法`
+- 使用装饰器：@classmethod
+- 类方法第一个参数：cls，表示类本身
+#### `静态方法`
+- 使用装饰器：@staticmethod
+- 静态方法不与实例绑定
