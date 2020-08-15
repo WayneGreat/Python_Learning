@@ -1,6 +1,6 @@
 # coding:utf-8
 
-class Date(object):
+class Date(object):  # 练习
     def __init__(self, year=0, month=0, day=0):
         self.year = year
         self.month = month
@@ -9,7 +9,7 @@ class Date(object):
     @classmethod  # 类方法
     def from_string(cls, date_as_string):
         year, month, day = map(int, date_as_string.split('-'))
-        date1 = cls(year, month, day) # 等于Date(year, month, day)
+        date1 = cls(year, month, day)  # 等于Date(year, month, day)
         return date1
 
     @staticmethod  # 静态方法

@@ -4,7 +4,7 @@ import datetime
 from dateutil import rrule
 
 
-class BetDate:
+class BetDate:  # 练习
     def __init__(self, start_date, stop_data):
         self.start = datetime.datetime.strptime(start_date, "%Y, %m, %d")
         self.stop = datetime.datetime.strptime(stop_data, "%Y, %m, %d")

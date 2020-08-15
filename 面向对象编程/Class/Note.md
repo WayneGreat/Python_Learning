@@ -34,6 +34,7 @@ class Foo:
 f = Foo()
 dir(f)  # 通过dir()函数获取实例所具有的属性
 print(f.x)
+
 ```
 > 运行结果
 ```
@@ -96,3 +97,98 @@ True
 #### `静态方法`
 - 使用装饰器：@staticmethod
 - 静态方法不与实例绑定
+***
+## Class4.py
+### 练习题
+```
+请编写“物理学家”的类，并将其作为“理论物理学家”和“实验物理学家”两个类的父类
+```
+### 运行结果
+```
+Relativity Hair is awesome
+Albert Einstein research AAA
+My theory is Relativity, it is based on ZZZ
+```
+### 笔记
+#### `继承`
+- 即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。
+> 示例-单继承
+```python
+class Person:  # 单继承
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def get_name(self):
+        return self.name
+
+    def get_age(self):
+        return self.age
+
+
+class Student(Person):
+    def __init__(self, school, name, age):
+        self.school = school
+        super().__init__(name, age)
+
+    def grade(self, n):
+        print("{0}'s grade is {1}".format(self.name, str(n)))
+
+
+stu1 = Student('Soochow', "Galileo", 27)
+stu1.grade(99)
+print((stu1.get_name()))
+print(stu1.get_age())
+
+```
+#### `super()`
+- super()函数是用于调用父类（超类）的一个方法。
+- super是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没可题，但是如果使用多继承，会涉及到查找顺序（MRO）、重复调用（钻石继承）等种种可题
+- MRO就是类的方法解析顺序表，其实也就是继承父类方法时的顺序表。
+
+> 运行结果
+```
+Galileo's grade is 99
+Galileo
+27
+```
+> 示例-多继承
+```python
+class K1:  # 多继承
+    def foo(self):
+        print("K1-foo")
+
+
+class K2:
+    def foo(self):
+        print("K2-foo")
+
+    def bar(self):
+        print("K2-bar")
+
+
+class J1(K1, K2):
+    pass
+
+
+class J2(K1, K2):
+    def bar(self):
+        print("J2-bar")
+
+
+class C(J1, J2):
+    pass
+
+
+print(C.__mro__) # 继承父类方法时的顺序表
+m = C()
+m.foo()
+m.bar()
+
+```
+> 运行结果2
+```
+(<class '__main__.C'>, <class '__main__.J1'>, <class '__main__.J2'>, <class '__main__.K1'>, <class '__main__.K2'>, <class 'object'>)
+K1-foo
+J2-bar
+```
