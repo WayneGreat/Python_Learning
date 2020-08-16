@@ -112,6 +112,10 @@ My theory is Relativity, it is based on ZZZ
 ### 笔记
 #### `继承`
 - 即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。
+#### `super()`
+- super()函数是用于调用父类（超类）的一个方法。
+- super是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没可题，但是如果使用多继承，会涉及到查找顺序（MRO）、重复调用（钻石继承）等种种可题
+- MRO就是类的方法解析顺序表，其实也就是继承父类方法时的顺序表。
 > 示例-单继承
 ```python
 class Person:  # 单继承
@@ -141,11 +145,6 @@ print((stu1.get_name()))
 print(stu1.get_age())
 
 ```
-#### `super()`
-- super()函数是用于调用父类（超类）的一个方法。
-- super是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没可题，但是如果使用多继承，会涉及到查找顺序（MRO）、重复调用（钻石继承）等种种可题
-- MRO就是类的方法解析顺序表，其实也就是继承父类方法时的顺序表。
-
 > 运行结果
 ```
 Galileo's grade is 99
@@ -191,4 +190,79 @@ m.bar()
 (<class '__main__.C'>, <class '__main__.J1'>, <class '__main__.J2'>, <class '__main__.K1'>, <class '__main__.K2'>, <class 'object'>)
 K1-foo
 J2-bar
+```
+***
+## Class5.py
+### 笔记
+#### `类的私有属性`
+- __private_attrs：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问
+#### `类的私有方法`
+- __private_method：两个下划线开头，声明该方法为私有方法，只能在类的内部调用 ，不能在类的外部调用
+>示例
+```python
+class Site:
+    def __init__(self, name, url):
+        self.name = name       # public 公共属性
+        self.__url = url   # private 私有属性
+ 
+    def who(self):
+        print('name  : ', self.name)
+        print('url : ', self.__url)
+ 
+    def __foo(self):          # 私有方法
+        print('这是私有方法')
+ 
+    def foo(self):            # 公共方法
+        print('这是公共方法')
+        self.__foo()
+ 
+x = Site('菜鸟教程', 'www.runoob.com')
+x.who()        # 正常输出
+x.foo()        # 正常输出
+x.__foo()      # 报错
+```
+#### `__str__`
+- 在python中方法名如果是__xxxx__()的，那么就有特殊的功能，因此叫做“魔法”方法
+- 当使用print输出对象的时候，只要自己定义了__str__(self)方法，那么就会打印从在这个方法中return的数据
+> 示例
+```python
+class RoundFloat:
+    def __init__(self, val):
+        self.value = round(val, 2)
+
+    def __str__(self):  # str:用户; repr:解释器
+        return "{0:.2f}".format(self.value)
+
+    __repr__ = __str__
+
+
+r = RoundFloat(3.1415926)
+print(r)
+print(type(r))
+```
+> 运行结果
+```
+3.14
+<class '__main__.RoundFloat'>
+```
+> 图例
+
+> 示例
+```python
+class Fraction:
+    def __init__(self,number,denom=1):
+        self.number = number
+        self.denom = denom
+
+    def __str__(self):
+        return str(self.number) + "/" + str(self.denom)
+
+    __repr__ = __str__
+
+f = Fraction(2,3)
+print(f)
+```
+> 运行结果
+```
+2/3
 ```
