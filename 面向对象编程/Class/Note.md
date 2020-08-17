@@ -220,6 +220,7 @@ x = Site('菜鸟教程', 'www.runoob.com')
 x.who()        # 正常输出
 x.foo()        # 正常输出
 x.__foo()      # 报错
+
 ```
 #### `__str__`
 - 在python中方法名如果是__xxxx__()的，那么就有特殊的功能，因此叫做“魔法”方法
@@ -239,6 +240,7 @@ class RoundFloat:
 r = RoundFloat(3.1415926)
 print(r)
 print(type(r))
+
 ```
 > 运行结果
 ```
@@ -263,8 +265,137 @@ class Fraction:
 
 f = Fraction(2,3)
 print(f)
+
 ```
 > 运行结果
 ```
 2/3
 ```
+***
+## Class6.py
+### 笔记
+#### `__slots__`
+- 优化内存
+> 示例
+```python
+class Bar:
+    __slots__ = ('name', 'age')
+
+
+Bar.name = "wayne"
+Bar.age = "2"
+b = Bar()
+print(b.name, b.age)
+
+```
+> 运行结果
+```
+wayne 2
+```
+#### `__getattr__`
+- 用于返回一个对象属性值。
+#### `__setattr__`
+- 用于设置属性值，该属性不一定是存在的
+> 示例
+```python
+class A:
+    def __getattr__(self, name):
+        print("you user getattr")
+
+    def __setattr__(self, name, value):
+        print("you use setattr")
+        self.__dict__[name] = value
+
+
+a = A()
+print(a.x)
+a.x = 'haha'
+print(a.x)
+
+```
+> 运行结果
+```
+you user getattr
+None
+you use setattr
+haha
+```
+#### `迭代器` & `生成器`
+> 示例
+```python
+class MyRange:  # 迭代器
+    def __init__(self, n):
+        self.i = 1
+        self.n = n
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.i <= self.n:
+            i = self.i
+            self.i += 1
+            return i
+        else:
+            raise StopIteration  # 停止迭代
+
+
+print("range(7):", list(range(7)))
+print("MyRange(7):", [i for i in MyRange(7)])
+
+```
+> 运行结果
+```
+range(7): [0, 1, 2, 3, 4, 5, 6]
+MyRange(7): [1, 2, 3, 4, 5, 6, 7]
+```
+> 示例
+```python
+# 斐波那契数列生成
+class Fibs:  # 版本1:迭代器
+    def __init__(self, max):
+        self.max = max
+        self.a = 0
+        self.b = 1
+
+    def __iter__(self):  # 可迭代
+        return self
+
+    def __next__(self):  # 迭代功能
+        fib = self.a
+        if fib > self.max:
+            raise StopIteration  # 停止迭代
+        self.a, self.b = self.b, self.a + self.b
+        return fib
+
+
+fibs = Fibs(10000)  # 只有通过迭代后，才有数据占用内存
+lst = [fibs.__next__() for i in range(10)]  # fibs.__next__():在迭代过程中执行一些功能
+print(lst)
+
+
+def fibs():  # 版本2:生成器
+    prev, curr = 0, 1
+    while True:  # 生成器的绝妙之处：它只会在迭代时才会运行，所以死循环也没有问题
+        yield prev  # 等于执行 return prev ，并在当前代码挂起，下次掉用时继续往后执行代码
+        prev, curr = curr, prev + curr
+
+
+import itertools
+
+# 使用itertools.islice()来对迭代器或生成器做切片操作
+print(list(itertools.islice(fibs(), 10)))
+print(list(itertools.islice(fibs(), 3, 10)))
+
+```
+> 运行结果
+```
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+[2, 3, 5, 8, 13, 21, 34]
+```
+##### `总结`
+- islice()产生的结果是一个迭代器，它可以产生出所需要的切片元素，但这是通过访问并丢弃所有起始索引之前的元素来实现的；之后的元素会由islice对象产生出来，直到到达结束索引为止；
+- islice()会消耗掉所提供的迭代器中的数据，由于迭代器中的元素只能访问一次，所有如果之后还需要去访问，那就应该先将数据转到列表中去。
+***
