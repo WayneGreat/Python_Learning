@@ -67,9 +67,9 @@ wayne
 - 每个python模块（python文件）都包含内置的变量 `__name__`，当该模块被直接执行的时候，`__name__` 等于文件名（包含后缀 .py ）
 - 如果该模块 import 到其他模块中，则该模块的 `__name__` 等于模块名称（不包含后缀.py），而 `__main__` 始终指当前执行模块的名称（包含后缀.py），进而当模块被直接执行时，__name__ == 'main' 结果为真
 ***
-### Paackage2.py
+### mypackage
 ### `笔记`
 > 示例
-
+![image](https://github.com/WayneGreat/Python_Learning/blob/master/Python%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/Image/%E5%8C%85%E7%BB%93%E6%9E%84.png)
 > Cmd运行
-
+![image](https://github.com/WayneGreat/Python_Learning/blob/master/Python%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/Image/cmd%E6%BC%94%E7%A4%BA.png)
