@@ -3,6 +3,12 @@
 ## Package
 ### Package1.py
 ### `笔记`
+#### `模块`
+- `.py`文件
+#### `包`
+- 有一定层次的目录结构
+    - `.py` 文件或子目录
+    - `__init__.py`
 > 导入模块＼包
 ```python
 import module
@@ -26,10 +32,40 @@ shuxue.pow(2,3)
 ```
 > 示例
 ```python
-import numpy as np
-import pandas as pd
+class Book:
+    lang = 'learn python with wayne'
+
+    def __init__(self, author):
+        self.author = author
+
+    def get_name(self):
+        return self.author
+
+
+def new_book():
+    return "数据准备和特征工程"
+
+
+if __name__ == '__main__': #  程序入口
+    python = Book('wayne')
+    author_name = python.get_name()
+    print(author_name)
+    published = new_book()
+    print(published)
+
 ```
-> 查看已安装的第三方包
-- cmd输入 `pip3 list`
-> 删除包
-- cmd输入 `pip uninstall module`
+> 运行结果
+```
+wayne
+数据准备和特征工程
+```
+#### `if __name__ == '__main__':`的作用&原理
+- 一个python文件通常有两种使用方法
+    - 第一是作为脚本直接执行
+    - 第二是 import 到其他的 python 脚本中被调用（模块重用）执行
+    - 因此 `if __name__ == '__main__':` 的作用就是控制这两种情况执行代码的过程，在 `if __name__ == '__main__':` 下的代码只有在第一种情况下（即文件作为脚本直接执行）才会被执行，而 import 到其他脚本中是不会被执行的
+- 每个python模块（python文件）都包含内置的变量 `__name__`，当该模块被直接执行的时候，`__name__` 等于文件名（包含后缀 .py ）
+- 如果该模块 import 到其他模块中，则该模块的 `__name__` 等于模块名称（不包含后缀.py），而 `__main__` 始终指当前执行模块的名称（包含后缀.py），进而当模块被直接执行时，__name__ == 'main' 结果为真
+***
+### Paackage2.py
+### `笔记`
