@@ -1,0 +1,7 @@
+README.md
+langspeak.py
+setup.py
+wayneproject.egg-info/PKG-INFO
+wayneproject.egg-info/SOURCES.txt
+wayneproject.egg-info/dependency_links.txt
+wayneproject.egg-info/top_level.txt
