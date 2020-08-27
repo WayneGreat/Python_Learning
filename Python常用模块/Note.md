@@ -96,6 +96,10 @@ wayne
 - `README.md, LICENSE` 为发布包时需要添加的说明文件   
 
 ### `主要文件`  
+> 示例
+
+![image](https://github.com/WayneGreat/Python_Learning/blob/master/Python%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/Image/pubpackage.png)
+
 > mybook.py  
 ```python
 class Book:
@@ -159,6 +163,10 @@ setuptools.setup(
 - 输入 `python3 setup.py sdist bdist_wheel` 进行打包
 - 输入 `twine upload --repository-url https://test.pypi.org/legacy/ ./dist/*` 再输入账户密码上传(url为pypi测试网站)
 - 进入test.pipy网站查看已上传的包，可以使用 `pip` 进行安装
+> 示例
+
+![image](https://github.com/WayneGreat/Python_Learning/blob/master/Python%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/Image/pypi.png)
+
 > 测试
 ```python
 import langspeak
