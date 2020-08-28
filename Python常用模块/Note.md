@@ -171,6 +171,10 @@ Life is short, You need Python.
 ***
 ## Package2.py
 ## 笔记
+> 文件操作符
+
+![image](https://github.com/WayneGreat/Python_Learning/blob/master/Python%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/Image/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%AC%A6.png)
+
 > 文件写入&读取
 ```python
 import os
