@@ -168,3 +168,36 @@ print(ls.speak())
 ```
 Life is short, You need Python.
 ```
+***
+## Package2.py
+## 笔记
+> 文件写入&读取
+```python
+import os
+
+print(os.getcwd())  # 获取当前python交互模式的目录
+
+with open('test.txt', 'a') as f:
+    f.write("\n学python")
+
+f = open('test.txt')
+print(f.read())  # 读取文件内容
+print(dir(f))  # 获取f的方法
+for line in f:  # 每行读取
+    print(line)
+```
+> CSV文件操作
+```python
+import csv
+
+data = [['name', 'number'], ['python', 111], ['java', 222], ['php', 333]]
+
+with open('csvfile.csv', 'w') as f:
+    writer = csv.writer(f)
+    writer.writerows(data)
+
+f = open('csvfile.csv')
+reader = csv.reader(f)
+for row in reader:
+    print(row)
+```
